@@ -7,6 +7,8 @@ const getAllAccounts = async (req, res) => {
     res.status(200).json(accounts);
 }
 
+
+
 const showUpdateForm = async (req, res)=>{
     try {
         const { id } = upgradeSchema.parse(
