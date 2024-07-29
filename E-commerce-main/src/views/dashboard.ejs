@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/main.css" rel="stylesheet" />
+    <link href="/css/dashboard.css" rel="stylesheet" />
+    <link href="/css/popup.css" rel="stylesheet" />
+    <title>Dynamic production line</title>
+</head>
+<body>
+    <%- include('header') %>
+    <%- include('popup') %>
+    <main class="container">
+        <h2><a class="addProduct" href="/admin/dashboard/add-product">Add New Product</a></h2>
+
+        <h2 class="title">accounts:</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="10"><span>Search by address:</span><input type="text" id="address"><button onclick="handleSearch('tAccount', '/admin/search-user')">Search</button></th>
+                </tr>
+                <tr>
+                    <th>full Name</th>
+                    <th>email</th>
+                    <th>role</th>
+                    <th>address</th>
+                    <th>phone Number</th>
+                    <th colspan="3">action</th>
+                </tr>
+            </thead>
+            <tbody class="tAccount">
+                <% accounts.map(account => { %>
+                    <tr>
+                        <td><%= account.fullName %></td>
+                        <td><%= account.email %></td>
+                        <td><%= account.role %></td>
+                        <td><%= account.address %></td>
+                        <td><%= account.phoneNumber %></td>
+                        <td><button value="<%= account._id %>" onclick="handleData(this.value, 'PATCH', '/admin/user-upgrade',false)">Upgrade</button></td>
+                        <td><button value="<%= account._id %>" onclick="handleData(this.value, 'PATCH', '/admin/user-update',true)">Edit</button></td>
+                        <td><button value="<%= account._id %>" onclick="showPopup(this.value, 'account')">Delete</button></td>
+                    </tr>
+            <% }); %>
+            </tbody>
+        </table>
+
+        <h2 class="title">categories:</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="10"><span>Search category:</span><input type="text" id="category"><button onclick="handleSearch('tCategory', '/admin/search-category')">Search</button></th>
+                </tr>
+                <tr>
+                    <th colspan="3" class="add"><button onclick="handleData('','','/admin/add-category',true)">Add+</button></th>
+                </tr>
+                <tr>
+                    <th>category</th>
+                    <th colspan="2">action</th>
+                </tr>
+            </thead>
+            <tbody class="tCategory">
+                <% categories.map(category => { %>
+                    <tr>
+                        <td><%= category.category %></td>
+                        <td><button value="<%= category._id %>" onclick="handleData(this.value, 'PATCH', '/admin/edit-category',true)">Edit</button></td>
+                        <td><button value="<%= category._id %>" onclick="showPopup(this.value, 'category')">Delete</button></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+        <h2 class="title">orders:</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="2"><span>Search by account:</span><input type="text" id="userId"><button onclick="handleSearch('tOrder', '/user/user-Order')">Search</button></th>
+                    <th colspan="10"><span>Advanced Search:</span><input type="text" id="fullName" placeholder="Enter your username"><input type="date" id="date"><input type="text" id="status" placeholder="Enter your status"><button onclick="handleFilter('tOrder')">Search</button></th>
+                </tr>
+                <tr>
+                    <th>accaunt</th>
+                    <th>date</th>
+                    <th>totla</th>
+                    <th>status</th>
+                    <th colspan="3">action</th>
+                </tr>
+            </thead>
+            <tbody class="tOrder">
+                 <% orders.map((order, index) => { %>
+                    <tr>
+                        <td><%= order.userId %></td>
+                        <td><%= order.date.toLocaleDateString() %></td>
+                        <td><%= order.total %>&#8362;</td>
+                        <td><%= order.status %></td>
+                        <td><button value="<%= index %>" data-product="<%= JSON.stringify(order) %>" onclick="handleProducts(this)">Show</button></td>
+                        <td><button value="<%= order._id %>" onclick="confirmation(this.value, 'confirmed')">confirmed</button></td>
+                        <td><button value="<%= order._id %>" onclick="confirmation(this.value, 'not confirmed')">not confirmed</button></td>
+                    </tr>
+                    <tr id="products-<%= order._id %>" class="products-row"></tr>
+                <% }); %> 
+            </tbody>
+        </table>
+        <canvas id="salesChart"></canvas>
+    </main>
+    <%- include('footer') %>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/js/script.js"></script>
+    <script src="/js/dashboard.js"></script>
+</body>
+</html>
