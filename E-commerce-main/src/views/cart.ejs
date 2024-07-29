@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/main.css" rel="stylesheet" />
+    <link href="css/shop.css" rel="stylesheet" />
+    <title>Dynamic production line</title>
+</head>
+<body>
+    <%- include('header') %>
+    <main class="container">
+        <h1>Products</h1>
+        <section id="cart"></section>
+        <h2 id="total">total: </h2>
+        <% if(token){ %>
+            <button value="<%= user.id %>" onclick="handleBay(this.value)" id="buy">buy</button>
+        <% } %>
+    </main>
+    <%- include('footer') %>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="/js/LocalStorage.js"></script>
+    <script src="/js/cart.js"></script>
+</body>
+</html>

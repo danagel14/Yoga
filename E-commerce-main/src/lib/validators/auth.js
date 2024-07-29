@@ -15,5 +15,5 @@ const signUpSchema = z.object({
 
 module.exports = {
   signInSchema,
-  signUpSchema,
+  signUpSchema
 };
