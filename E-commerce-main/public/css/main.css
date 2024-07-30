@@ -20,9 +20,12 @@ a {
   min-height: 600px;
 }
 
-video{
-  width: 80%;
-  height:300px;
+video {
+  width: 100%; 
+  height: auto; 
+  max-height: 300px; 
+  object-fit: cover; 
+  margin-bottom: 300px;
 }
 
 .filterAndVideo{
@@ -52,7 +55,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid rgba(69, 69, 69, 0.425);
+  border-bottom: 10px solid #0505056c;
 }
 
 
