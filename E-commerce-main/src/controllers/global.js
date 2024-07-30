@@ -12,7 +12,14 @@ const showCart = async (req, res) => {
     res.render("cart", {user: verifyToken(req.cookies.token), token: req.cookies.token});
 }
 
+const showMenu = async (req, res) => {
+    res.render("showMenu", {user: verifyToken(req.cookies.token), token: req.cookies.token});
+};
+
+
 module.exports = {
     showShop,
-    showCart
+    showCart,
+    showMenu
 };
+
