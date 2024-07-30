@@ -1,0 +1,40 @@
+footer {
+    background-color: #f1f1f1;
+    padding: 20px;
+    text-align: center;
+    border-top: 1px solid #e1e1e1;
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .footer-info {
+    flex: 1;
+  }
+  
+  .footer-customer-service {
+    flex: 1;
+    text-align: left;
+  }
+  
+  .footer-customer-service h4 {
+    margin-bottom: 10px;
+  }
+  
+  .footer-customer-service p {
+    margin: 5px 0;
+  }
+  
+  .footer-customer-service a {
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .footer-customer-service a:hover {
+    text-decoration: underline;
+  }
+  

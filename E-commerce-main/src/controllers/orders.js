@@ -17,7 +17,7 @@ const ordersGroupBy = async (req, res) => {
     const monthNum = parseInt(month, 10);
     const yearNum = parseInt(year, 10);
 
-    // יצירת תאריך התחלה ותאריך סוף עם פורמט תקני
+
     const startDate = new Date(yearNum, monthNum - 1);
     const endDate = new Date(yearNum, monthNum);
 
@@ -255,14 +255,17 @@ const createOrder = async (req, res) => {
   try {
     const { userId, productList, total } = ordersSchema.parse(req.body);
     
-    const product = new Orders({
+    const order = new Orders({
       userId,
       productList,
       date: new Date(),
       total,
     });
-    product.save();
-    res.status(201).json({ message: "order created" });
+    
+    
+    await order.save();
+    
+    res.status(201).json({ message: "Order created" });
   } catch (error) {
     console.error(error);
 
@@ -274,6 +277,7 @@ const createOrder = async (req, res) => {
     res.status(500).json({ message: "Internal Server Error" });
   }
 };
+
 
 const orderConfirmation = async (req,res) => {
   try {
