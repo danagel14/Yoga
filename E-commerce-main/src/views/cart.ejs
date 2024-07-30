@@ -21,5 +21,73 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="/js/LocalStorage.js"></script>
     <script src="/js/cart.js"></script>
+    <!-- Popup Form -->
+<div id="popup-form" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); background:white; padding:20px; border:1px solid #ccc; box-shadow:0 0 10px rgba(0,0,0,0.1); z-index:1000;">
+    <h3>Fill in your details</h3>
+    <form id="popup-form-content">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <br>
+        <button type="submit">Submit</button>
+        <button type="button" onclick="closePopup()">Cancel</button>
+    </form>
+</div>
+<!-- Overlay -->
+<div id="overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:999;"></div>
+
 </body>
+<script>// Function to open the popup
+    function handleBay(userId) {
+        document.getElementById('popup-form').style.display = 'block';
+        document.getElementById('overlay').style.display = 'block';
+        
+        // Attach event listener to form submit
+        document.getElementById('popup-form-content').addEventListener('submit', function(event) {
+            event.preventDefault();
+            $.ajax({
+                url: '/user/create-Order',
+                method: 'POST',
+                contentType: "application/json",
+                data: JSON.stringify({
+                    userId,
+                    productList: productsArray(),
+                    total: calculationTotal()
+                }),
+                success: function(response) {
+                    localStorage.removeItem("cart");
+                    window.location.href = '/home';
+                },
+                error: function(error) {
+                    $("#message_error").text(error?.responseJSON?.message);
+                }
+            });
+            closePopup();
+        });
+    }
+    
+    // Function to close the popup
+    function closePopup() {
+        document.getElementById('popup-form').style.display = 'none';
+        document.getElementById('overlay').style.display = 'none';
+    }
+    
+    // Functions for calculating total and creating products array
+    function calculationTotal() {
+        let total = 0;
+        products.map(product => total += Number(product.price) * Number(product.quantity));
+        return total;
+    }
+    
+    function productsArray() {
+        let array = [];
+        products.map(product => {
+            item = {product: product._id, quantity: product.quantity};
+            array.push(item);
+        });
+        return array;
+    }
+    </script>
 </html>
