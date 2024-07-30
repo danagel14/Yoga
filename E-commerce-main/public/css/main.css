@@ -34,7 +34,7 @@ video {
   height: auto; 
   max-height: 400px; 
   object-fit: cover; 
-  margin-top: 10px; 
+  margin-top: 5px; 
 }
 
 .filterAndVideo {
@@ -231,7 +231,7 @@ footer {
   padding: 20px;
   background-color: #f9f9f9;
   border-top: 1px solid #e1e1e1;
-  margin-top: 20px; /* מרווח בין התוכן לפוטר */
+  margin-top: 10px;
 }
 
 .contact-info h2 {
