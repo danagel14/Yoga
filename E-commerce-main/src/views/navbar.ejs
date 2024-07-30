@@ -1,7 +1,7 @@
 <nav>
     <li><a href="/cart" id="cart-icon"><img src="/cart.png" alt="cart-icon"><span id="cart-count" class="badge">0</span></a></li>
-    <li><a href="/menu">Home</a></li>
-    <li><a href="/home">Product</a></li>
+    <li><a href="/home">Home</a></li>
+    <li><a href="/menu">Product</a></li>
 
     <% if(user && user.role !== 'ADMIN'){ %>
             <li><a href="/user/showOrders/<%= user.id %>">Orders</a></li>
