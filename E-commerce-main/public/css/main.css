@@ -1,12 +1,12 @@
 * {
-  box-sizing: border-box; /* כלול ריפוד ומרווחים בתוך רוחב וגובה של אלמנט */
+  box-sizing: border-box; 
   margin: 0;
   padding: 0;
 }
 
 html, body {
   width: 100%;
-  overflow-x: hidden; /* מנע גלילה צדדית */
+  overflow-x: hidden; 
 }
 
 body {
@@ -23,7 +23,7 @@ a {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  min-height: 600px;
+  min-height: 400px;
   width: 100%; 
   padding: 0 10px;
   margin: 0 auto;
@@ -32,16 +32,17 @@ a {
 video {
   width: 100%; 
   height: auto; 
-  max-height: 300px; 
+  max-height: 400px; 
   object-fit: cover; 
-  margin-bottom: 280px; 
+  margin-top: 10px; 
 }
 
 .filterAndVideo {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%; /* תופס את כל רוחב החלון */
+  width: 100%; 
+  height: 300px;
 }
 
 .filter {
@@ -183,4 +184,82 @@ nav > li {
   header > img {
     display: none;
   }
+}
+/* Style for footer */
+footer {
+  background-color: #f1f1f1;
+  padding: 20px;
+  text-align: center;
+  border-top: 1px solid #e1e1e1;
+  position: relative; /* מאפשר לפוטר להיות מוצג במיקום נכון */
+  margin-top: 20px; /* תוספת של רווח בין התוכן לפוטר */
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-info {
+  flex: 1;
+}
+
+.footer-customer-service {
+  flex: 1;
+  text-align: left;
+}
+
+.footer-customer-service h4 {
+  margin-bottom: 10px;
+}
+
+.footer-customer-service p {
+  margin: 5px 0;
+}
+
+.footer-customer-service a {
+  text-decoration: none;
+  color: #333;
+}
+
+.footer-customer-service a:hover {
+  text-decoration: underline;
+}
+.contact-info {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-top: 1px solid #e1e1e1;
+  margin-top: 20px; /* מרווח בין התוכן לפוטר */
+}
+
+.contact-info h2 {
+  margin-bottom: 15px;
+  font-size: 24px;
+  color: #333;
+}
+
+.contact-info p {
+  margin-bottom: 15px;
+  font-size: 16px;
+  color: #666;
+}
+
+.contact-info ul {
+  list-style: none;
+  padding: 0;
+}
+
+.contact-info ul li {
+  margin-bottom: 10px;
+}
+
+.contact-info a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
 }
