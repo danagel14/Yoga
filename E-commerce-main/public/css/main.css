@@ -57,8 +57,9 @@ header {
 
 
 header > img {
-  width: 80px;
+  width: 110px;
   cursor: pointer;
+  border-radius: 20px;
 }
 
 nav {
