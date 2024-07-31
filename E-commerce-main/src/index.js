@@ -28,7 +28,6 @@ app.set("view engine", "ejs");
 app.use("/", routes);
 app.get("/", showSignIn);
 
-// Route to provide the Google Maps API key
 app.get('/api/google-maps-api-key', (req, res) => {
     res.json({ apiKey: process.env.GOOGLE_MAPS_API_KEY });
 });
