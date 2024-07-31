@@ -1,6 +1,22 @@
 const Cart = new LocalStorage();
       document.getElementById("cart-count").innerText = Cart.quantityCart();
       let itemId = null;
+const tempElement = document.getElementById("temp");
+
+tempElement.addEventListener("mouseover", function () {
+  if (this.ariaValueNow >= 25 && this.ariaValueNow <= 35) {
+    let temp = Number(this.ariaValueNow).toFixed(1);
+    document.getElementById(
+      "temp-value"
+    ).innerHTML = `temp: ${temp}°C\n <p class='yoga'>Great time for yoga</p>`;
+  } else {
+    document.getElementById("temp-value").innerHTML = `temp: ${temp} + "°C"`;
+  }
+});
+
+tempElement.addEventListener("mouseout", function () {
+  document.getElementById("temp-value").innerHTML = "";
+});
 
       function handleSearch(role) {
         $.ajax({
@@ -25,12 +41,15 @@ const Cart = new LocalStorage();
           method: "POST",
           contentType: "application/json",
           data: JSON.stringify({
-            productName: $("#productName").val(),
+            productName: $("#name").val(),
             price: $("#price").val(),
             category: $("#category").val(),
           }),
           success: function (response) {
-            updateProductList(response, role);
+            if(response.length > 0)
+              updateProductList(response, role);
+            else
+              $("#message-box").text("Product not found")
           },
           error: function (error) {
             $("#message_error").text(error?.responseJSON?.message);

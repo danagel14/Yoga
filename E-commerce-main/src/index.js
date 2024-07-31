@@ -11,30 +11,23 @@ const { showSignIn } = require('./controllers/user');
 
 const PORT = process.env.PORT || 3000;
 
-// Create an express app
 const app = express();
 
 app.use(cookieParser());
 
-// Serve static files from the "public" directory
 app.use(express.static(path.join(__dirname, "../public")));
 app.use(express.json());
 
-// Log all requests
 app.use(morgan("dev"));
 
-// Enable CORS
 app.use(cors());
 
-// Set view engine to EJS
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
-// Define routes
 app.use("/", routes);
 app.get("/", showSignIn);
 
-// Route to provide the Google Maps API key
 app.get('/api/google-maps-api-key', (req, res) => {
     res.json({ apiKey: process.env.GOOGLE_MAPS_API_KEY });
 });

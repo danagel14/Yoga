@@ -90,8 +90,8 @@ const showDashboard = async (req, res) => {
         };
       });
       
-    res.render('dashboard',{user: verifyToken(req.cookies.token), token: req.cookies.token, accounts, categories, orders: enhancedOrders});
-}
+      res.render('dashboard',{user: verifyToken(req.cookies.token), token: req.cookies.token, accounts, categories, orders: enhancedOrders,temperatore:0});
+    }
 
 const addProduct = async (req, res) => {
     const categories = await Category.find();

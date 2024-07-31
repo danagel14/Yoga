@@ -1,6 +1,8 @@
 const Product = require("../modules/Product");
 const { productSchema, productUpdateSchema, searchProductSchema, deleteProductSchema, filterSchema} = require("../lib/validators/produc");
 const { z } = require("zod");
+const pageId = process.env.PAGE_ID;
+const userAccessToken = process.env.FACEBOOK_TOKEN;
 // const path = require('path');
 //const fs = require('fs');
 
@@ -59,40 +61,81 @@ const searchProduct = async (req, res) => {
     }
 }
 
-const createProduct = async (req, res) => {
-    try {
-      const { productName, description, price, category } = productSchema.parse(
-        req.body
-      );
-      const { filename } = req.file;
-      const pathImage = `./uploads/${filename}`;
-      const productExists = await Product.findOne({ productName });
-      
-      if (productExists) {
-        return res.status(409).json({ message: "Product already exists" });
-      }
-      
-      const product = new Product({
-        productName,
-        description,
-        price,
-        pathImage,
-        category
-      });
-      
-      product.save();
-      //res.status(201).json({ message: "Product created" });
-      res.status(201).redirect("/admin/dashboard");
-    } catch (error) {
-      console.error(error);
+async function getPageAccessToken() {
+  const url = "https://graph.facebook.com/me/accounts?access_token=" + userAccessToken;
+
+  const response = await fetch(url);
+  const data = await response.json();
+  return data.data[0].access_token;
   
-      if (error instanceof z.ZodError) {
-        const { message } = error.errors[0];
-        return res.status(422).json({ message: `Validation Error: ${message}` });
-      }
-      res.status(500).json({ message: "Internal Server Error" });
+}
+
+// Function to create a private post
+async function createPrivatePost(pageAccessToken, message) {
+  const url = "https://graph.facebook.com/" + pageId + "/feed";
+
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      message: message,
+      access_token: pageAccessToken,
+      published: true, // Set to false to make the post private (unpublished)
+    }),
+  });
+
+  if (!response.ok) {
+    const error = await response.json();
+    console.error('Error creating post:', error);
+    return;
+  }
+
+  const data = await response.json();
+  console.log('Post created successfully: ' + JSON.stringify(data));
+}
+const createProduct = async (req, res) => {
+  try {
+    const { productName, description, price, category } = productSchema.parse(
+      req.body
+    );
+    const { filename } = req.file;
+    const pathImage = `./uploads/${filename}`;
+    const productExists = await Product.findOne({ productName });
+    
+    if (productExists) {
+      return res.status(409).json({ message: "Product already exists" });
     }
-  };
+    
+    const product = new Product({
+      productName,
+      description,
+      price,
+      pathImage,
+      category
+    });
+    
+    product.save();
+    (async () => {
+      const pageAccessToken = await getPageAccessToken();
+      if (pageAccessToken) {
+        const message = productName + " product was created";
+        createPrivatePost(pageAccessToken, message);
+      }
+    })();
+    //res.status(201).json({ message: "Product created" });
+    res.status(201).redirect("/admin/dashboard");
+  } catch (error) {
+    console.error(error);
+
+    if (error instanceof z.ZodError) {
+      const { message } = error.errors[0];
+      return res.status(422).json({ message: `Validation Error: ${message}` });
+    }
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};
 
   const updateproduct = async (req, res) => {
     try {
