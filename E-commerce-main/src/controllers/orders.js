@@ -300,6 +300,32 @@ const orderConfirmation = async (req,res) => {
     res.status(500).json({ message: "Internal Server Error" });
   }
 }
+const getOrdersStatusCount = async (req, res) => {
+  try {
+      const statuses = ['Awaiting confirmation', 'confirmed', 'not confirmed'];
+
+      const ordersCount = await Orders.aggregate([
+          { $match: { status: { $in: statuses } } },
+          { $group: { _id: "$status", count: { $sum: 1 } } },
+          { $project: { _id: 0, status: "$_id", count: "$count" } }
+      ]);
+
+      // Prepare data for chart
+      const result = statuses.map(status => {
+          const entry = ordersCount.find(order => order.status === status);
+          return entry ? entry.count : 0;
+      });
+
+      res.status(200).json({
+          labels: statuses,
+          values: result
+      });
+  } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
 
 module.exports = {
   searchOrders,
@@ -307,5 +333,6 @@ module.exports = {
   ordersGroupBy,
   orderConfirmation,
   getUserOrder,
-  filterForOrder
+  filterForOrder,
+  getOrdersStatusCount
 };
