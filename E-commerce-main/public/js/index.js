@@ -28,9 +28,11 @@ tempElement.addEventListener("mouseout", function () {
           }),
           success: function (response) {
             updateProductList(response, role);
+            $("#message-box").text("")
           },
           error: function (error) {
-            $("#message_error").text(error?.responseJSON?.message);
+            updateProductList([], role)
+            $("#message-box").text(error?.responseJSON?.message);
           },
         });
     }
@@ -46,13 +48,16 @@ tempElement.addEventListener("mouseout", function () {
             category: $("#category").val(),
           }),
           success: function (response) {
-            if(response.length > 0)
+            $("#message-box").text("")
+            if(response.length > 0){
               updateProductList(response, role);
-            else
+            }else{
+              updateProductList([], role)
               $("#message-box").text("Product not found")
+            }
           },
           error: function (error) {
-            $("#message_error").text(error?.responseJSON?.message);
+            $("#message-box").text(error?.responseJSON?.message);
           },
         });
     }
