@@ -26,7 +26,6 @@ const showShop = async (req, res) => {
 
             const weather_res = await axios.get(weather);
             temperature = {temp:weather_res.data.main.temp , icon:weather_res.data.weather[0].icon}
-            console.log( temperature)
         }
         else
         {

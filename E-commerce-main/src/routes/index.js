@@ -8,8 +8,8 @@ router.use("/user", auth, require("./orders"));
 router.get("/cart", auth, showCart);
 //router.get("/home", auth, showShop);
 //router.get("/menu", auth, showMenu);
-router.get("/home", auth, showMenu);
-router.get("/menu", auth, showShop);
+router.get("/home", auth, showShop);
+router.get("/menu", auth, showMenu);
 
 
 router.use("/admin", adminOnly, require("./dashboard"));

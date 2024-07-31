@@ -105,14 +105,14 @@ array.map(item => {
         </tr>`;
 });
 } else if (type === "tCategory") {
-array.map(item => {
+
     productHtml += `
         <tr>
-            <td>${item.category}</td>
-            <td><button value="${item._id}" onclick="handleData(this.value, 'PATCH', '/admin/edit-category',true)">Edit</button></td>
-            <td><button value="${item._id}" onclick="showPopup(this.value, 'category')">Delete</button></td>
+            <td>${array.category}</td>
+            <td><button value="${array._id}" onclick="handleData(this.value, 'PATCH', '/admin/edit-category',true)">Edit</button></td>
+            <td><button value="${array._id}" onclick="showPopup(this.value, 'category')">Delete</button></td>
         </tr>`;
-});
+
 } else if (type === "tOrder") {
 array.map((order, index) => {
     productHtml += `

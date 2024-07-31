@@ -41,12 +41,15 @@ tempElement.addEventListener("mouseout", function () {
           method: "POST",
           contentType: "application/json",
           data: JSON.stringify({
-            productName: $("#productName").val(),
+            productName: $("#name").val(),
             price: $("#price").val(),
             category: $("#category").val(),
           }),
           success: function (response) {
-            updateProductList(response, role);
+            if(response.length > 0)
+              updateProductList(response, role);
+            else
+              $("#message-box").text("Product not found")
           },
           error: function (error) {
             $("#message_error").text(error?.responseJSON?.message);
