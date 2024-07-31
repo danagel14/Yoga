@@ -25,7 +25,6 @@ app.use(cors());
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
-// Define routes
 app.use("/", routes);
 app.get("/", showSignIn);
 
