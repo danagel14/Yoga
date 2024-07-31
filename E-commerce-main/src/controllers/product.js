@@ -1,8 +1,8 @@
 const Product = require("../modules/Product");
 const { productSchema, productUpdateSchema, searchProductSchema, deleteProductSchema, filterSchema} = require("../lib/validators/produc");
 const { z } = require("zod");
-const path = require('path');
-const fs = require('fs');
+// const path = require('path');
+//const fs = require('fs');
 
 const getAllProducts = async (req, res) => {
     const products = await Product.find();
@@ -24,10 +24,10 @@ const filterForProduct = async (req, res) =>{
   } catch (error) {
     console.log(error);
 
-       if (error instanceof z.ZodError) {
-         const { message } = error.errors[0];
-         return res.status(422).json({ message: `Validation Error: ${message}` });
-      }
+      // if (error instanceof z.ZodError) {
+      //     const { message } = error.errors[0];
+      //     return res.status(422).json({ message: `Validation Error: ${message}` });
+      // }
 
       res.status(500).json({ message: "Internal Server Error" }); 
   }
@@ -81,7 +81,7 @@ const createProduct = async (req, res) => {
       });
       
       product.save();
-      res.status(201).json({ message: "Product created" });
+      //res.status(201).json({ message: "Product created" });
       res.status(201).redirect("/admin/dashboard");
     } catch (error) {
       console.error(error);
@@ -106,14 +106,14 @@ const createProduct = async (req, res) => {
         if(typeof req.file !== 'undefined'){
             const { filename } = req.file;
             pathImage = `./uploads/${filename}`;
-            const pathFile = path.join(__dirname, imageDB.pathImage);
-             console.log(pathFile);
-            fs.unlink(pathFile, (err) => {
+            // const pathFile = path.join(__dirname, imageDB.pathImage);
+            // console.log(pathFile);
+            /*fs.unlink(pathFile, (err) => {
                 if (err) {
                   console.error('Error deleting file:', err);
                   throw new Error();
                 }
-              });
+              });*/
         }else{
           pathImage = imageDB.pathImage
         }
@@ -132,7 +132,7 @@ const createProduct = async (req, res) => {
           return res.status(204).json({message: "Updated feild"})
         }
 
-        res.redirect('/');
+        //res.redirect('/');
         res.status(200).json({ message: 'Product updated successfully' });
 
     } catch (error) {

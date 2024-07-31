@@ -191,8 +191,8 @@ footer {
   padding: 20px;
   text-align: center;
   border-top: 1px solid #e1e1e1;
-  position: relative; /* מאפשר לפוטר להיות מוצג במיקום נכון */
-  margin-top: 20px; /* תוספת של רווח בין התוכן לפוטר */
+  position: relative;
+  margin-top: 20px; 
 }
 
 .footer-content {
