@@ -11,7 +11,6 @@ const { showSignIn } = require('./controllers/user');
 
 const PORT = process.env.PORT || 3000;
 
-// Create an express app
 const app = express();
 
 app.use(cookieParser());
