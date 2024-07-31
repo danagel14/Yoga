@@ -18,7 +18,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "../public")));
 app.use(express.json());
 
-// Log all requests
 app.use(morgan("dev"));
 
 // Enable CORS
