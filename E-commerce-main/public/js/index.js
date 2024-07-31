@@ -1,6 +1,22 @@
 const Cart = new LocalStorage();
       document.getElementById("cart-count").innerText = Cart.quantityCart();
       let itemId = null;
+const tempElement = document.getElementById("temp");
+
+tempElement.addEventListener("mouseover", function () {
+  if (this.ariaValueNow >= 25 && this.ariaValueNow <= 35) {
+    let temp = Number(this.ariaValueNow).toFixed(1);
+    document.getElementById(
+      "temp-value"
+    ).innerHTML = `temp: ${temp}°C\n <p class='yoga'>Great time for yoga</p>`;
+  } else {
+    document.getElementById("temp-value").innerHTML = `temp: ${temp} + "°C"`;
+  }
+});
+
+tempElement.addEventListener("mouseout", function () {
+  document.getElementById("temp-value").innerHTML = "";
+});
 
       function handleSearch(role) {
         $.ajax({
