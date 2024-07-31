@@ -122,3 +122,31 @@ button[onclick*="handleData"]:not([onclick*="showPopup"])[value=""]:not([onclick
     background-color: #218838;
 }
 
+#ordersStatusChart{
+    max-width: 300px;
+    max-height: 500px;
+    margin-top: 40px;
+}
+
+#salesChart{
+    max-width: 700px;
+    max-height: 700px;
+
+}
+/* Add these styles to your main.css or dashboard.css */
+
+.charts-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Adjust spacing between charts */
+}
+
+.chart-wrapper {
+    flex: 1;
+    min-width: 300px; /* Adjust the minimum width as needed */
+}
+
+canvas {
+    width: 100% !important;
+    height: auto !important;
+}

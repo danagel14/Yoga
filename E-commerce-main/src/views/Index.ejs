@@ -27,11 +27,11 @@
   
           
             <h3>Advanced Search</h3>
-            <label for="productName">Product Name:</label>
+            <label for="name">Product Name:</label>
             <input
               type="text"
-              id="productName"
-              name="productName"
+              id="name"
+              name="name"
             />
             <label for="price">price:</label>
             <input
@@ -46,9 +46,10 @@
               <% }) %>
             </select>
             <button value="<%= user.role %>" onclick="handleFilter(this.value)">Search</button>
-      </aside>
-    </div>
-      <h1>Welcome to shopping</h1>
+          </aside>
+        </div>
+        <h1>Welcome to shopping</h1>
+        <span id="message-box"></span>
       <section class="shop">
         <% products.map((product) => {%>
         <div class="product">

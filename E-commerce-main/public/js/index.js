@@ -28,9 +28,11 @@ tempElement.addEventListener("mouseout", function () {
           }),
           success: function (response) {
             updateProductList(response, role);
+            $("#message-box").text("")
           },
           error: function (error) {
-            $("#message_error").text(error?.responseJSON?.message);
+            updateProductList([], role)
+            $("#message-box").text(error?.responseJSON?.message);
           },
         });
     }
@@ -41,15 +43,21 @@ tempElement.addEventListener("mouseout", function () {
           method: "POST",
           contentType: "application/json",
           data: JSON.stringify({
-            productName: $("#productName").val(),
+            productName: $("#name").val(),
             price: $("#price").val(),
             category: $("#category").val(),
           }),
           success: function (response) {
-            updateProductList(response, role);
+            $("#message-box").text("")
+            if(response.length > 0){
+              updateProductList(response, role);
+            }else{
+              updateProductList([], role)
+              $("#message-box").text("Product not found")
+            }
           },
           error: function (error) {
-            $("#message_error").text(error?.responseJSON?.message);
+            $("#message-box").text(error?.responseJSON?.message);
           },
         });
     }

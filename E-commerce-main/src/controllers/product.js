@@ -39,12 +39,21 @@ const searchProduct = async (req, res) => {
             req.body
         );
 
-        let product = await Product.findOne({ productName });
+        let product;
+
+        if(productName === ""){
+          product = await Product.find();
+          return  res.status(200).json(product);
+        }
+
+        product = await Product.findOne({ productName });
 
         if(!product){
           return  res.status(404).json({ message: "This product does not exist in the system" });
-        }
+        } 
 
+
+        
         res.status(200).json([product]);
         
     } catch (error) {
@@ -140,7 +149,7 @@ const createProduct = async (req, res) => {
 
         if (error instanceof z.ZodError) {
             const { message } = error.errors[0];
-            return res.status(422).json({ message: `Validation Error: ${message}` });
+            return res.status(422).json({ message:` Validation Error: ${message}` });
           }
           res.status(500).json({ message: "Internal Server Error" });
     }
