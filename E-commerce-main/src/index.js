@@ -20,7 +20,6 @@ app.use(express.json());
 
 app.use(morgan("dev"));
 
-// Enable CORS
 app.use(cors());
 
 // Set view engine to EJS
