@@ -238,6 +238,7 @@ const searchOrders = async (req, res) => {
         user: verifyToken(req.cookies.token),
         token: req.cookies.token,
         orders: enhancedOrders,
+        temperatore:0
       });
   } catch (error) {
     console.log(error);
