@@ -3,18 +3,21 @@ const Cart = new LocalStorage();
 let products = Cart.getCart();
 document.getElementById('total').innerHTML += calculationTotal();
 document.getElementById('cart-count').innerHTML = Cart.quantityCart();
-const tempElement = document.getElementById('temp');
+const tempElement = document.getElementById("temp");
 
-tempElement.addEventListener('mouseover', function() {
-  if(this.ariaValueNow >= 25 && this.ariaValueNow <= 30){
-      document.getElementById('temp-value').innerHTML = `temp:${this.ariaValueNow}°C\n <p class='yoga'>Great time for yoga</p>`
-  }else{
-      document.getElementById('temp-value').innerHTML = this.ariaValueNow + '°C';
+tempElement.addEventListener("mouseover", function () {
+  if (this.ariaValueNow >= 25 && this.ariaValueNow <= 35) {
+    let temp = Number(this.ariaValueNow).toFixed(1);
+    document.getElementById(
+      "temp-value"
+    ).innerHTML = `temp: ${temp}°C\n <p class='yoga'>Great time for yoga</p>`;
+  } else {
+    document.getElementById("temp-value").innerHTML = `temp: ${temp} + "°C"`;
   }
 });
 
-tempElement.addEventListener('mouseout', function() {
-    document.getElementById('temp-value').innerHTML = "";
+tempElement.addEventListener("mouseout", function () {
+  document.getElementById("temp-value").innerHTML = "";
 });
 let cartBody = ``;
 

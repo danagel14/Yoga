@@ -3,6 +3,7 @@ const Product = require("../modules/Product");
 const User = require("../modules/User");
 const Order = require("../modules/Orders");
 const { verifyToken } = require("../lib/utils");
+const { getWeather } = require("../lib/weather");
 
 const salesData = async (req, res) => {
   try {
@@ -90,7 +91,11 @@ const showDashboard = async (req, res) => {
         };
       });
       
-      res.render('dashboard',{user: verifyToken(req.cookies.token), token: req.cookies.token, accounts, categories, orders: enhancedOrders,temperatore:0});
+      const temperature = await getWeather();
+
+      if(!temperature) return res.status(404).send("No results found");
+
+      res.render('dashboard',{user: verifyToken(req.cookies.token), token: req.cookies.token, accounts, categories, orders: enhancedOrders,temperatore: temperature});
     }
 
 const addProduct = async (req, res) => {

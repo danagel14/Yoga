@@ -1,5 +1,21 @@
 let itemId = null;
 let deletePath;
+const tempElement = document.getElementById("temp");
+
+tempElement.addEventListener("mouseover", function () {
+  if (this.ariaValueNow >= 25 && this.ariaValueNow <= 35) {
+    let temp = Number(this.ariaValueNow).toFixed(1);
+    document.getElementById(
+      "temp-value"
+    ).innerHTML = `temp: ${temp}°C\n <p class='yoga'>Great time for yoga</p>`;
+  } else {
+    document.getElementById("temp-value").innerHTML = `temp: ${temp} + "°C"`;
+  }
+});
+
+tempElement.addEventListener("mouseout", function () {
+  document.getElementById("temp-value").innerHTML = "";
+});
 
 function handleProducts(button){
     const order = JSON.parse(button.getAttribute('data-product'));
