@@ -74,7 +74,9 @@ header > img {
   cursor: pointer;
   border-radius: 20px;
 }
-
+.facebook{
+  margin-right: 500px;
+}
 nav {
   display: flex;
   align-items: center;
