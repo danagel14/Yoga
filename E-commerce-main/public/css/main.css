@@ -75,7 +75,8 @@ header > img {
   border-radius: 20px;
 }
 .facebook{
-  margin-right: 500px;
+  margin-right: 490px;
+  width: 80px;
 }
 nav {
   display: flex;
