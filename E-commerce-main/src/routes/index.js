@@ -13,10 +13,13 @@ router.get("/home", auth, showShop);
 router.get("/menu", auth, showMenu);
 
 router.get('/api/orders/status', getOrdersStatusCount);
+router.use("/", require("./filterProducts"));
 router.use("/admin", adminOnly, require("./dashboard"));
 
 router.use("/admin", adminOnly, require("./accounts"));
 router.use("/admin", adminOnly, require("./category"));
 router.use("/admin", require("./product"));
+
+
 
 module.exports = router;

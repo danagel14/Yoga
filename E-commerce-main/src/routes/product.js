@@ -4,18 +4,19 @@ const adminOnly = require("../middlewares/adminOnly");
 
 const {
   getAllProducts,
-  searchProduct,
+  // searchProduct,
   createProduct,
   updateproduct,
   deleteProduct,
-  filterForProduct
+  // filterForProduct
   } = require("../controllers/product");
+  
 
 router.get("/all-product", getAllProducts);
 
-router.post("/search-product", searchProduct);
+// router.post("/search-product", searchProduct);
+// router.post("/filter-product", filterForProduct);
 router.post("/create-product", adminOnly, upload.single('image'), createProduct);
-router.post("/filter-product", filterForProduct);
 
 router.patch("/update-product", adminOnly, upload.single('image'), updateproduct);
 

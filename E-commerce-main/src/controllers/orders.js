@@ -9,6 +9,7 @@ const {
   orderConfirmationSchema
 } = require("../lib/validators/orders");
 const { z } = require("zod");
+const { getWeather } = require("../lib/weather");
 
 const ordersGroupBy = async (req, res) => {
   try {
@@ -231,6 +232,10 @@ const searchOrders = async (req, res) => {
         productList: enhancedProductList,
       };
     });
+
+    const temperature = await getWeather();
+
+    if(!temperature) return res.status(404).send("No results found");
       
     res
       .status(200)
@@ -238,7 +243,7 @@ const searchOrders = async (req, res) => {
         user: verifyToken(req.cookies.token),
         token: req.cookies.token,
         orders: enhancedOrders,
-        temperatore:0
+        temperatore: temperature
       });
   } catch (error) {
     console.log(error);
