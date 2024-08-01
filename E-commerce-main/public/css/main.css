@@ -245,10 +245,13 @@ footer {
   text-decoration: underline;
 }
 .contact-info {
-  padding: 20px;
+  padding: 30px;
   background-color: #f9f9f9;
   border-top: 1px solid #e1e1e1;
-  margin-top: 10px;
+  border-bottom: 1px solid #e1e1e1;
+  margin-top: 15px;
+  height: 200px;
+  
 }
 
 .contact-info h2 {

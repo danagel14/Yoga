@@ -1,32 +1,94 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Google Maps Example</title>
     <style>
-        /* קביעת גובה המפה */
+        body,
+        h1,
+        a {
+            margin: 0;
+            padding: 0;
+            font-family: math;
+        }
+
+        body {
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+            background-image: url('/background4.png');
+            /* Replace with your image path */
+            background-size: cover;
+            /* Cover the entire page */
+            background-position: center;
+            /* Center the image */
+            background-repeat: no-repeat;
+            /* Do not repeat the image */
+        }
+
+        header {
+            background: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+
+        .map-container {
+            display: flex;
+            justify-content: center;
+        }
+
         #map {
             height: 500px;
-            width: 100%;
+            width: 70%;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        #back{
-            font-size: 15px;
-            font-family:fantasy;
+
+        .back-button {
             text-align: center;
+            margin: 20px 0;
         }
-        #header{
+
+        .back-button a {
+            text-decoration: none;
+            color: #2980b9;
+            display: inline-block;
+            padding: 10px 20px;
+            transition: color 0.3s, text-decoration 0.3s;
             font-size: 20px;
-            font-family:fantasy;
-            text-align: center;
+            font-weight: bolder;
+        }
+
+        .back-button a:hover {
+            color: #3498db;
+            text-decoration: underline;
         }
     </style>
 </head>
+
 <body>
-   <div id="header"> <h1>Visit Our Branches</h1></div>
-   <div id="back"> <a href="/home">Home Page</a></div>
-   <br>
-    <div id="map"></div>
+    <header>
+        <h1>Visit Our Branches</h1>
+    </header>
+
+    <div class="map-container">
+        <div id="map"></div>
+    </div>
+
+    <div class="back-button">
+        <a href="/menu">Home Page</a>
+    </div>
+
     <script src="map.js"></script>
-   
-   
 </body>
+
 </html>
