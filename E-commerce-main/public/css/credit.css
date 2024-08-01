@@ -15,10 +15,58 @@
     width: 600px;
     height: 330px;
 }
+/* CSS */
+/* CSS */
+/* #cart, #total, #buy {
+    display: inline-block;
+    margin-right: 20px; /* רווח בין האלמנטים */
+    /* margin-top: 5px; */
+    /* margin-bottom: 5px; */
+/* } */ 
 
 
+.data{
+    margin-left:150px;
+    font-size: 20px;
+    margin-bottom: 2px;
+}
 /* Overlay */
+.count{
+    margin-left: 50px;
+    font-size: 20px;
+    margin-bottom: 5px;
+    margin-top: 4px;
+}
+#total{
+    margin-top: 4px;
+}
+#buy{
+    margin-top: 4px;
+}
+.product{
+    widows:70px;
+}
+.actions{
+    margin-left: 50px;
+    margin-bottom: 5px;
+    justify-content: space-between;
+}
+.delete{
+    border-radius: 9px;
+    height: 20px;
+    font-family: math;
+    width: 70px;
+    font-size: 16px;
+    margin-top: 4px;
+}
+#buy{
 
+  
+    border-radius: 9px;
+    font-family: math;
+    width: 70px;
+    font-size: 18px;
+}
 #overlay {
     display: none;
     position: fixed;
