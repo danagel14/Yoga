@@ -11,4 +11,5 @@ Users can purchase products using credit cards and register for the store to enj
 - Shopping cart for managing items before purchase
 - Secure checkout process using credit cards
 - User system for registration and login
+- Store Locator Map: Find Soulmat Yoga physical stores near you
 
