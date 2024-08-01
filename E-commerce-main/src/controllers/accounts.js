@@ -141,3 +141,12 @@ const deleteAccount = async (req, res) => {
         res.status(500).json({ message: "Internal Server Error" });
     }
 }
+
+module.exports = {
+    updateAccount,
+    upgradeAccount,
+    deleteAccount,
+    getAllAccounts,
+    searchAccount,
+    showUpdateForm
+};
