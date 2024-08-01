@@ -23,3 +23,58 @@ form > input, select{
 .productName{
     font-size: 20px;
 }
+body {
+    background-image: url('/background4.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    padding: 20px;
+    border-radius: 8px;
+  }
+
+  button.submit {
+    background-color: #282a28; 
+    color: white; 
+    border: none; 
+    padding: 10px 20px; 
+    text-align: center; 
+    text-decoration: none; 
+    display: inline-block; 
+    font-size: 16px; 
+    margin: 10px 0; 
+    cursor: pointer; 
+    border-radius: 5px;
+}
+
+button.submit:hover {
+    background-color: hsl(120, 3%, 6%);
+}
+
+input[type="email"], input[type="password"] {
+    width: 100%; 
+    padding: 12px 20px; 
+    margin: 8px 0; 
+    display: inline-block; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    box-sizing: border-box; 
+    font-size: 16px;
+}
+
+label {
+    display: block; 
+    margin-bottom: 5px; 
+    font-weight: bold;
+}
+
+#message_error {
+    color: red; 
+    margin-top: 10px; 
+    display: block;
+}

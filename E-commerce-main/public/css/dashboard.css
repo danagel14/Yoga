@@ -22,7 +22,7 @@ h2.title {
     display: inline-block;
     margin: 20px 0;
     padding: 10px 20px;
-    background-color: #28a745;
+    background-color: hwb(120 15% 84%);
     color: white;
     text-decoration: none;
     border-radius: 5px;
@@ -30,7 +30,7 @@ h2.title {
 }
 
 .addProduct:hover {
-    background-color: #218838;
+    background-color: hwb(0 58% 5%);
 }
 
 /* Table styles */

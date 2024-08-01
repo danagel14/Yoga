@@ -293,4 +293,37 @@ footer {
   font-size: 25px;
   font-style: oblique;
 }
+.content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.contact-info, .newsletter {
+  width: 25%;
+}
+
+.newsletter h2 {
+  font-size: 20px;
+}
+
+.newsletter form {
+  display: flex;
+  flex-direction: column;
+}
+
+.newsletter input[type="email"] {
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.newsletter button {
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.newsletter{
+  margin-top: 50px;
+  margin-right: 70px;
+}
 

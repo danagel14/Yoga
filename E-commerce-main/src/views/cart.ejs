@@ -27,31 +27,40 @@
         <label for="card-number">Card Number:</label>
         <input type="text" id="card-number" name="card-number" required>
         <br> <br>
-        <label for="expiry-date">Expiration Date (MM/YY):</label>
+        
         <label for="expiry-date">Expiration Date:</label>
-<input type="month" id="expiry-date" name="expiry-date" required>
-
+        <input type="month" id="expiry-date" name="expiry-date" required>
         <br> <br>
+        
         <label for="cvv">CVV:</label>
         <input type="text" id="cvv" name="cvv" required maxlength="4" pattern="\d{3,4}">
         <br> <br>
-        <label for="card-number">City For delivery:</label>
-        <input type="text" char="cityr" name="City For delivery" required>
+        
+        <label for="city">City For Delivery:</label>
+        <input type="text" id="city" name="city" required>
         <br> <br>
-        <label for="card-number">Full Adress:</label>
-        <input type="text" char="adress" name="Full Adress:" required>
+        
+        <label for="address">Full Address:</label>
+        <input type="text" id="address" name="address" required>
         <br><br>
+        
+        <label for="self-pickup">Self Pickup:</label>
+        <input type="checkbox" id="self-pickup" name="self-pickup">
+        <br> <br>
+        
         <button type="submit">Make Order</button>
         <button type="button" onclick="closePopup()">Cancel</button>
     </form>
+    
 </div>
 
 <div id="overlay"></div>
-<%- include('footer') %>
+
    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="/js/LocalStorage.js"></script>
     <script src="/js/cart.js"></script>
     <script src="/js/credit.js"></script> 
 
 </body>
+
 </html>

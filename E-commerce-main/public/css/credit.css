@@ -7,22 +7,48 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: white;
+    background-color: #f7f7f7;
     padding: 20px;
-    border: 1px solid #ccc;
+    border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     z-index: 1000;
     width: 600px;
-    height: 330px;
 }
-/* CSS */
-/* CSS */
-/* #cart, #total, #buy {
-    display: inline-block;
-    margin-right: 20px; /* רווח בין האלמנטים */
-    /* margin-top: 5px; */
-    /* margin-bottom: 5px; */
-/* } */ 
+#popup-form-content {
+    max-width: 100%;
+    margin: auto;
+}
+#popup-form-content label {
+    display: block;
+    margin-bottom: 5px;
+}
+#popup-form-content input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+#popup-form-content button {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 4px;
+    background-color: rgb(114, 109, 109);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: math;
+}
+#popup-form-content button[type="button"] {
+    background-color: rgb(125, 121, 121);
+    font-family: math;
+}
+#popup-form-content button:hover {
+    opacity: 0.8;
+}
+
 
 
 .data{
